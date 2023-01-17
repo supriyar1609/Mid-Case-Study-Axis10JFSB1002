@@ -1,0 +1,27 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: API_GATEWAY
+  cloud:
+    gateway:
+      routes:
+      - id: BOOK-SERVICE
+        uri: 
+            lb://BOOK-SERVICE
+        predicates:
+        - Path=/book/** 
+
+      - id: USER-SERVICE
+        uri: 
+            lb://USER-SERVICE
+        predicates:
+        - Path=/user/**
+        
+      - id: LOGIN-SERVICE
+        uri: 
+            lb://LOGIN-SERVICE
+        predicates:
+        - Path=/lms/login/**
+        
